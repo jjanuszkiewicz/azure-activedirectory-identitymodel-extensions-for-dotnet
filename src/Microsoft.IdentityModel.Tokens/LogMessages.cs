@@ -143,6 +143,7 @@ namespace Microsoft.IdentityModel.Tokens
         public const string IDX10618 = "IDX10618: Key unwrap failed using decryption Keys: '{0}'.\nExceptions caught:\n '{1}'.\ntoken: '{2}'.";
         public const string IDX10619 = "IDX10619: Decryption failed. Algorithm: '{0}'. Either the Encryption Algorithm: '{1}' or none of the Security Keys are supported by the CryptoProviderFactory.";
         public const string IDX10620 = "IDX10620: Unable to obtain a CryptoProviderFactory, both EncryptingCredentials.CryptoProviderFactory and EncryptingCredentials.Key.CrypoProviderFactory are null.";
+        public const string IDX10903 = "IDX10903: Token decryption succeeded. With thumbprint: '{0}'.";
 
         // Formating
         public const string IDX10400 = "IDX10400: Unable to decode: '{0}' as Base64url encoded string.";
@@ -254,11 +255,17 @@ namespace Microsoft.IdentityModel.Tokens
         //public const string IDX10811 = "IDX10811:"
         public const string IDX10812 = "IDX10812: Unable to create a {0} from the properties found in the JsonWebKey: '{1}'.";
         public const string IDX10813 = "IDX10813: Unable to create a {0} from the properties found in the JsonWebKey: '{1}', Exception '{2}'.";
+        public const string IDX10814 = "IDX10814: Unable to create a {0} from the properties found in the JsonWebKey: '{1}'. Missing: '{2}'.";
 
         //EventBasedLRUCache errors
         public const string IDX10900 = "IDX10900: EventBasedLRUCache._eventQueue encountered an error while processing a cache operation. Exception '{0}'.";
         public const string IDX10901 = "IDX10901: CryptoProviderCacheOptions.SizeLimit must be greater than 10. Value: '{0}'";
         public const string IDX10902 = "IDX10902: Object disposed exception in '{0}': '{1}'";
+
+        // Crypto Errors
+        public const string IDX11000 = "IDX11000: Cannot create EcdhKeyExchangeProvider. '{0}'\'s Curve '{1}' does not match with '{2}'\'s curve '{3}'.";
+        public const string IDX11001 = "IDX11001: Cannot generate KDF. '{0}':'{1}' and '{2}':'{3}' must be different.";
+        public const string IDX11002 = "IDX11002: Cannot create the EcdhKeyExchangeProvider. Unable to obtain ECParameters from {0}. Verify the SecurityKey is an ECDsaSecurityKey or JsonWebKey and that properties Crv, X, Y, and D (if used for a private key) are contained in the provided SecurityKey.";
 #pragma warning restore 1591
     }
 }

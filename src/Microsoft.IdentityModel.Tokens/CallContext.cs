@@ -28,7 +28,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics.Tracing;
 
 namespace Microsoft.IdentityModel.Tokens
 {
