@@ -78,7 +78,7 @@ namespace Microsoft.IdentityModel.Tokens
                     continue;
 
                 string jsonClaimType = claim.Type;
-                object jsonClaimValue = claim.ValueType.Equals(ClaimValueTypes.String, StringComparison.Ordinal) ? claim.Value : GetClaimValueUsingValueType(claim);
+                object jsonClaimValue = claim.ValueType.Equals(ClaimValueTypes.String) ? claim.Value : GetClaimValueUsingValueType(claim);
                 object existingValue;
 
                 // If there is an existing value, append to it.
@@ -240,8 +240,11 @@ namespace Microsoft.IdentityModel.Tokens
             {
                 // Inform the user that the LKG is expired.
                 if (!validationParameters.ConfigurationManager.IsLastKnownGoodValid)
+                {
                     LogHelper.LogInformation(TokenLogMessages.IDX10263);
-                else                
+                    return false;
+                }
+                else
                     currentConfiguration = validationParameters.ConfigurationManager.LastKnownGoodConfiguration;
             }
 
