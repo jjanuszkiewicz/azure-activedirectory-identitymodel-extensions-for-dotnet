@@ -29,7 +29,6 @@ using System;
 using System.Diagnostics.Tracing;
 using System.Globalization;
 using System.Linq;
-using System.Reflection;
 using Microsoft.IdentityModel.Abstractions;
 
 namespace Microsoft.IdentityModel.Logging
@@ -47,17 +46,7 @@ namespace Microsoft.IdentityModel.Logging
         /// <summary>
         /// Indicates whether the log message header (contains library version, date/time, and PII debugging information) has been written.
         /// </summary>
-        private static bool _isHeaderWritten { get; set; } = false;
-
-        /// <summary>
-        /// The log message that indicates the current library version.
-        /// </summary>
-        private static string _versionLogMessage = "Microsoft.IdentityModel version: {0}. ";
-
-        /// <summary>
-        /// The log message that indicates the date.
-        /// </summary>
-        private static string _dateLogMessage = "Date: {0}. ";
+        private static bool _isHeaderWritten = false;
 
         /// <summary>
         /// The log message that is shown when PII is off.

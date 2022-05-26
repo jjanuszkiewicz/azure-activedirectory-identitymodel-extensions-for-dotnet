@@ -3,10 +3,14 @@
   <nugetVersion>3.5.0-rc-1285</nugetVersion>
   <runtimes>net45,net461,netstandard2.0</runtimes>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <assemblyVersion>6.18.1</assemblyVersion>
 =======
   <assemblyVersion>6.17.1</assemblyVersion>
 >>>>>>> c5b0431d (Revert "Remove deprecated "language" attribute")
+=======
+  <assemblyVersion>6.18.1</assemblyVersion>
+>>>>>>> a535e1bee87b2b947102f7bb5e23dfb5d9610830
   <nugetSuffix>preview</nugetSuffix>
   <projects>
     <src>

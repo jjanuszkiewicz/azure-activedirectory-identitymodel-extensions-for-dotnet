@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 {
 =======
 ﻿{
 >>>>>>> c5b0431d (Revert "Remove deprecated "language" attribute")
+=======
+{
+>>>>>>> a535e1bee87b2b947102f7bb5e23dfb5d9610830
     "keys": [
         {
             "alg": "SHA256",
