@@ -513,7 +513,7 @@ namespace Microsoft.IdentityModel.Protocols.OpenIdConnect.Tests
             TestUtilities.WriteHeader("OidcCreateLogoutRequestUrl - " + testId, true);
 
             var context = new CompareContext();
-            // there is no net452 target, we bind to net45
+// there is no net452 target, we bind to net45
 #if NET452
             if (!message.SkuTelemetryValue.Equals("ID_NET45"))
                 context.Diffs.Add($"{message.SkuTelemetryValue} != ID_NET45");

@@ -38,7 +38,6 @@ namespace Microsoft.IdentityModel.Tokens
     /// </summary>
     internal static class SupportedAlgorithms
     {
-        //there might be a better place to put these values
         private const int EcdsaMinKeySize = 256;
         private const int RsaMinKeySize = 2048;
 
@@ -350,24 +349,6 @@ namespace Microsoft.IdentityModel.Tokens
                 return false;
 
             return (key is SymmetricSecurityKey || (key is JsonWebKey jsonWebKey && jsonWebKey.Kty == JsonWebAlgorithmsKeyTypes.Octet));
-        }
-
-        internal static bool IsSupportedEcdsaKeyWrap(string algorithm, SecurityKey key)
-        {
-            if (key == null)
-                return false;
-
-            if (string.IsNullOrEmpty(algorithm))
-                return false;
-
-            if (!EcdsaWrapAlgorithms.Contains(algorithm))
-                return false;
-
-            if (key is ECDsaSecurityKey || (key is JsonWebKey ecdJsonWebKey && ecdJsonWebKey.Kty == JsonWebAlgorithmsKeyTypes.EllipticCurve))
-                return key.KeySize >= EcdsaMinKeySize;
-
-            // todo: check if curve is in approved curves (P-256, P-384, or P-521) - only these 3 
-            return false;
         }
 
         internal static bool IsSupportedRsaAlgorithm(string algorithm, SecurityKey key)
