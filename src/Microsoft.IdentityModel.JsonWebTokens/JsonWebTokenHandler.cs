@@ -546,7 +546,6 @@ namespace Microsoft.IdentityModel.JsonWebTokens
         /// <param name="encryptingCredentials">Defines the security key and algorithm that will be used to encrypt the JWT.</param>
         /// <param name="compressionAlgorithm">Defines the compression algorithm that will be used to compress the JWT token payload.</param>       
         /// <param name="additionalHeaderClaims">Defines the dictionary containing any custom header claims that need to be added to the outer JWT token header.</param>
-        /// <param name="additionalInnerHeaderClaims">Defines the dictionary containing any custom header claims that need to be added to the inner JWT token header.</param>
         /// <exception cref="ArgumentNullException">if <paramref name="payload"/> is null.</exception>
         /// <exception cref="ArgumentNullException">if <paramref name="signingCredentials"/> is null.</exception>
         /// <exception cref="ArgumentNullException">if <paramref name="encryptingCredentials"/> is null.</exception>
