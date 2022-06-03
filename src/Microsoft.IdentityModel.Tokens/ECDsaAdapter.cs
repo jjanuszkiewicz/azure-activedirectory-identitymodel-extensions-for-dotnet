@@ -28,6 +28,9 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+#if NET6_0
+using System.Runtime.Versioning;
+#endif
 using System.Security.Cryptography;
 using Microsoft.IdentityModel.Logging;
 
@@ -52,7 +55,7 @@ namespace Microsoft.IdentityModel.Tokens
         /// </exception>
         internal ECDsaAdapter()
         {
-#if NET472 || NETCOREAPP3_1
+#if NET472 || NET6_0
             CreateECDsaFunction = CreateECDsaUsingECParams;
 #elif NETSTANDARD2_0
             // Although NETSTANDARD2_0 specifies that ECParameters are supported, we still need to call SupportsECParameters()
@@ -265,6 +268,9 @@ namespace Microsoft.IdentityModel.Tokens
         /// </summary>
         /// <returns>True if operations using <see cref="CngKey"/> are supported on user's runtime platform, false otherwise.</returns>
         [MethodImpl(MethodImplOptions.NoOptimization)]
+#if NET6_0
+        [SupportedOSPlatform("windows")]
+#endif
         private static bool SupportsCNGKey()
         {
             try
@@ -278,7 +284,7 @@ namespace Microsoft.IdentityModel.Tokens
             }
         }
 
-#if NET472 || NETSTANDARD2_0 || NETCOREAPP3_1
+#if NET472 || NETSTANDARD2_0 || NET6_0
         /// <summary>
         /// Creates an ECDsa object using the <paramref name="jsonWebKey"/> and <paramref name="usePrivateKey"/>.
         /// 'ECParameters' structure is available in .NET Framework 4.7+, .NET Standard 1.6+, and .NET Core 1.0+.
@@ -366,7 +372,7 @@ namespace Microsoft.IdentityModel.Tokens
         /// <returns>True if <see cref="ECParameters"/> structure is supported, false otherwise.</returns>
         internal static bool SupportsECParameters()
         {
-#if NET472 || NETCOREAPP3_1
+#if NET472 || NET6_0
             return true;
 #else
             try

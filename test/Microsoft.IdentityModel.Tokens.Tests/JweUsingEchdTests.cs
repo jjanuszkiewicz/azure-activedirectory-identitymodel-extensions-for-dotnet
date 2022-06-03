@@ -25,7 +25,7 @@
 //
 //------------------------------------------------------------------------------
 
-#if NET472 || NETCOREAPP3_1
+#if NET472 || NET6_0
 
 using System;
 using System.Collections;

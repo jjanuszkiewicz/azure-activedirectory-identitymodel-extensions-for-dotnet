@@ -32,6 +32,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.IdentityModel.Tokens.Jwt.Tests;
 using System.IO;
 using System.Linq;
+#if NET6_0
+using System.Runtime.Versioning;
+#endif
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -337,8 +340,10 @@ namespace Microsoft.IdentityModel.JsonWebTokens.Tests
             };
         }
 
-#if NET_CORE
+#if NETCOREAPP2_1
         [PlatformSpecific(TestPlatforms.Windows)]
+#elif NET6_0
+        [SupportedOSPlatform("windows")]
 #endif
         /// <summary>
         /// Verify the results from ValidateToken() and ValidateTokenAsync() should match.

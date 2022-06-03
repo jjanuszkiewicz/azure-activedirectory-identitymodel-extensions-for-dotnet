@@ -32,7 +32,7 @@ using Microsoft.IdentityModel.Logging;
 
 namespace Microsoft.IdentityModel.Tokens
 {
-#if NET472 || NETCOREAPP3_1
+#if NET472 || NET6_0
     /// <summary>
     /// Provides a Security Key that can be used as Content Encryption Key (CEK) for use with a JWE
     /// </summary>

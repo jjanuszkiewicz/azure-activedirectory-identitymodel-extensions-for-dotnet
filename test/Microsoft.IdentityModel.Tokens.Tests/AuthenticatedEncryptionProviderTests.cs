@@ -27,6 +27,9 @@
 
 using System;
 using System.Collections.Generic;
+#if NET6_0
+using System.Runtime.Versioning;
+#endif
 using Microsoft.IdentityModel.TestUtils;
 using Xunit;
 #pragma warning disable CS3016 // Arrays as attribute arguments is not CLS-compliant
@@ -88,7 +91,11 @@ namespace Microsoft.IdentityModel.Tokens.Tests
     public class AuthenticatedEncryptionProviderTests
     {
 #if NET_CORE
+#if NETCOREAPP2_1
         [PlatformSpecific(TestPlatforms.Linux | TestPlatforms.OSX)]
+#elif NET6_0
+        [UnsupportedOSPlatform("windows")]
+#endif
 
         [Fact]
         public void AesGcmEncryptionOnLinuxAndMac()
@@ -97,8 +104,10 @@ namespace Microsoft.IdentityModel.Tokens.Tests
         }
 #endif
 
-#if NET_CORE
+#if NETCOREAPP2_1
         [PlatformSpecific(TestPlatforms.Windows)]
+#elif NET6_0
+        [SupportedOSPlatform("windows")]
 #endif
         [Fact]
         public void AesGcmEncryptionOnWindows()
@@ -116,7 +125,11 @@ namespace Microsoft.IdentityModel.Tokens.Tests
         }
 
 #if NET_CORE
+#if NETCOREAPP2_1
         [PlatformSpecific(TestPlatforms.Windows)]
+#elif NET6_0
+        [SupportedOSPlatform("windows")]
+#endif
         [Fact]
         public void AesGcm_Dispose()
         {

@@ -27,6 +27,9 @@
 
 using System;
 using System.IO;
+#if NET6_0
+using System.Runtime.Versioning;
+#endif
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.IdentityModel.JsonWebTokens;
@@ -44,10 +47,8 @@ namespace Microsoft.IdentityModel.Tokens.Tests
     /// </summary>
     public class ReferenceTests
     {
-#if NET_CORE
-        [PlatformSpecific(TestPlatforms.Windows)]
-#endif
-#if NET472 || NETCOREAPP3_1
+
+#if NET472 || NET6_0
         [Fact]
         public void ECDH_ESReferenceTest()
         {
@@ -79,6 +80,11 @@ namespace Microsoft.IdentityModel.Tokens.Tests
         }
 #endif
 
+#if NETCOREAPP2_1
+        [PlatformSpecific(TestPlatforms.Windows)]
+#elif NET6_0
+        [SupportedOSPlatform("windows")]
+#endif
         [Fact]
         public void AesGcmReferenceTest()
         {

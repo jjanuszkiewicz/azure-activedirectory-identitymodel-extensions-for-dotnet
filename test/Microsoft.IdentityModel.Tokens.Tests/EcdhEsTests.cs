@@ -32,7 +32,7 @@ using Xunit;
 using KEY = Microsoft.IdentityModel.TestUtils.KeyingMaterial;
 
 #pragma warning disable CS3016 // Arrays as attribute arguments is not CLS-compliant
-#if NET472 || NETCOREAPP3_1
+#if NET472 || NET6_0
 namespace Microsoft.IdentityModel.Tokens.Tests
 {
     public class EcdhEsTests
