@@ -3,9 +3,9 @@ param(
     [string]$dotnetDir="c:\Program Files\dotnet",
     [string]$msbuildDir="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin",
     [string]$root=$PSScriptRoot,
-    [string]$runTests="YES",
+    [string]$runTests="NO",
     [string]$failBuildOnTest="YES",
-    [string]$slnFile="wilson.sln",
+    [string]$slnFile="wilsonwithouttests.sln",
     [switch]$runApiCompat,
     [switch]$generateContractAssemblies)
 
@@ -105,17 +105,22 @@ WriteSectionFooter("End Environment");
 
 $ErrorActionPreference = "Stop"
 
-WriteSectionHeader("VerifyResourceUsage.pl");
+WriteSectionHeader("updateAssemblyInfo.pl");
+Write-Host "Invoke-Expression $PSScriptRoot\updateAssemblyInfo.ps1"
+Invoke-Expression "$PSScriptRoot\updateAssemblyInfo.ps1"
+WriteSectionFooter("End updateAssemblyInfo.pl");
 
-Write-Host ">>> Start-Process -Wait -PassThru -NoNewWindow perl $root\src\VerifyResourceUsage.pl"
-$verifyResourceUsageResult = Start-Process -Wait -PassThru -NoNewWindow perl $root\src\VerifyResourceUsage.pl
+#WriteSectionHeader("VerifyResourceUsage.pl");
 
-if($verifyResourceUsageResult.ExitCode -ne 0)
-{
-	throw "VerifyResourceUsage.pl failed."
-}
+#Write-Host ">>> Start-Process -Wait -PassThru -NoNewWindow perl $root\src\VerifyResourceUsage.pl"
+#$verifyResourceUsageResult = Start-Process -Wait -PassThru -NoNewWindow perl $root\src\VerifyResourceUsage.pl
 
-WriteSectionFooter("End VerifyResourceUsage.pl");
+#if($verifyResourceUsageResult.ExitCode -ne 0)
+#{
+#	throw "VerifyResourceUsage.pl failed."
+#}
+
+#WriteSectionFooter("End VerifyResourceUsage.pl");
 
 WriteSectionHeader("Build");
 
